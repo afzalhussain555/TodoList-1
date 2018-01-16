@@ -33,9 +33,7 @@ app.post('/up', function(req,res) {
         res.send(todos)
     }
     else {
-        let x=todos[req.body.id]
-        todos[req.body.id]=todos[req.body.id-1]
-        todos[req.body.id-1]=x
+        todos.splice(req.body.id,0,todos.splice(req.body.id-1,1)[0])
         res.send(todos)
     }
 })
@@ -45,9 +43,7 @@ app.post('/down', function(req,res) {
         res.send(todos)
     }
     else {
-        let y=todos[req.body.id]
-        todos[req.body.id]=todos[req.body.id+1]
-        todos[req.body.id+1]=y
+        todos.splice(req.body.id+1,0,todos.splice(req.body.id,1)[0])
         res.send(todos)
     }
 })
